@@ -10,25 +10,33 @@
   
                 <h2 class="fw-bold mb-2 " style="color:rgb(48, 42, 42);">Login</h2>
                 <br>
-  
-                <div class="form-outline form-white mb-4" >
-                  <i class="pi pi-user" style="font-size: 2.5rem"></i>
-                  <input  type="email" id="typeEmailX" class="form-control form-control-lg " placeholder="UserName" style="color:dimgray;"/>
-                  
+
+         <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="login-block">
+                <div class="input-group form-outline form-white mb-4 ">
+                  <span class="input-group-text">
+                    <i class="fas fa-user"></i> <i class="pi pi-user"></i>
+                  </span>
+                  <input type="text" name="username" id="username" class="form-control form-control-lg " [(ngModel)]="user.username" required placeholder="Username" style="color:dimgray;"/>
+                </div>
                 </div>
   
-                <div class="form-outline form-white mb-4">
-                  <i class="fa-solid fa-lock"></i>
-                  <input type="password" id="typePasswordX" class="form-control form-control-lg" placeholder="Password"/>
+                <div class="login-block">
+                <div class=" input-group form-outline form-white mb-4 ">
+                  <span class="input-group-text">
+                    <i class="fas fa-lock"></i><i class="pi pi-lock"></i>
+                  </span>
+                  <input type="password"  name="password" id="password" class="form-control form-control-lg" [(ngModel)]="user.password" required placeholder="Password"/>
                   
                 </div>
-  
+          </div>
+  </form>
                 
                 <input type="checkbox" id="true" name="true" >
                 <label for="vehicle1" style="margin-left: 10px;"> Remember me</label>
                 <br>
                 <br>
-                <button type="button" class="btn btn-primary btn-lg" routerLink="home">Login</button>
+                <button type="button" class="btn btn-primary btn-lg"  style="background: linear-gradient(to right, rgb(246, 187, 61) ,rgb(241, 90, 90)); width: 300px; border-radius: 70px;" [disabled]="!loginForm.form.valid"  routerLink="home">Login</button>
                 <br>
                 <br>
                 <p class="small mb-5 pb-lg-2"><a style="color:gray;" href="#!">Forgot password?</a></p>
